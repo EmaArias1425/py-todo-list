@@ -25,7 +25,7 @@ El servidor se levanta en `http://localhost:8000`.
 
 ## Frontend React (Todo List)
 
-El frontend está en `/tmp/workspace/EmaArias1425/py-todo-list/frontend` y permite:
+El frontend está en `./frontend` y permite:
 
 - agregar tareas
 - marcar completadas

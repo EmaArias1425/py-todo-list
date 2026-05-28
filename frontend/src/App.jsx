@@ -34,27 +34,9 @@ function App() {
   }
 
   useEffect(() => {
-    const fetchByFilter = async () => {
-      try {
-        const query =
-          filter === 'all' ? '' : `?completed=${filter === 'completed'}`
-
-        const response = await fetch(`${API_URL}/todos/${query}`)
-        if (!response.ok) {
-          throw new Error('No se pudieron cargar las tareas')
-        }
-
-        const data = await response.json()
-        setTodos(data)
-        setError('')
-      } catch {
-        setError('Error al cargar tareas')
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchByFilter()
+    Promise.resolve().then(() => {
+      loadTodos(filter)
+    })
   }, [filter])
 
   const handleAddTodo = async (event) => {
