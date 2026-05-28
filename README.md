@@ -7,6 +7,7 @@ Los datos se almacenan en una base de datos SQLite en memoria, por lo que se rei
 ## Requisitos
 
 - Python 3.12+
+- Node.js 20+ (para frontend)
 
 ## Instalación
 
@@ -14,7 +15,7 @@ Los datos se almacenan en una base de datos SQLite en memoria, por lo que se rei
 pip install -r requirements.txt
 ```
 
-## Ejecución
+## Ejecución backend
 
 ```bash
 python -m uvicorn app.main:app --reload
@@ -22,15 +23,40 @@ python -m uvicorn app.main:app --reload
 
 El servidor se levanta en `http://localhost:8000`.
 
+## Frontend React (Todo List)
+
+El frontend está en `/tmp/workspace/EmaArias1425/py-todo-list/frontend` y permite:
+
+- agregar tareas
+- marcar completadas
+- eliminar tareas
+- filtrar por pendientes/completadas
+
+### Ejecutar frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+El frontend corre en `http://localhost:5173` y consume por defecto `http://localhost:8000`.
+
+Si necesitas cambiar la URL del backend, crea un archivo `frontend/.env` con:
+
+```bash
+VITE_API_URL=http://tu-backend
+```
+
 ## Endpoints
 
-| Método   | Ruta            | Descripción                                      |
-|----------|-----------------|--------------------------------------------------|
-| `POST`   | `/todos/`       | Crear un nuevo todo                              |
+| Método   | Ruta            | Descripción                                        |
+|----------|-----------------|----------------------------------------------------|
+| `POST`   | `/todos/`       | Crear un nuevo todo                                |
 | `GET`    | `/todos/`       | Listar todos (filtro opcional `?completed=true`)  |
-| `GET`    | `/todos/{id}`   | Obtener un todo por ID                           |
-| `PUT`    | `/todos/{id}`   | Actualizar un todo                               |
-| `DELETE` | `/todos/{id}`   | Eliminar un todo                                 |
+| `GET`    | `/todos/{id}`   | Obtener un todo por ID                             |
+| `PUT`    | `/todos/{id}`   | Actualizar un todo                                 |
+| `DELETE` | `/todos/{id}`   | Eliminar un todo                                   |
 
 ## Ejemplos
 
